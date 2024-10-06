@@ -1,0 +1,113 @@
+﻿@model AeC.Models.Endereco
+
+<h1>Criar Endereço</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Cep"></label>
+        <input asp-for="Cep" class="form-control" maxlength="9" />
+        <span asp-validation-for="Cep" class="text-danger"></span>
+        <button type="button" id="buscarCep" class="btn btn-primary">Buscar Endereço</button>
+    </div>
+    <div class="form-group">
+        <label asp-for="Logradouro"></label>
+        <input asp-for="Logradouro" class="form-control" />
+        <span asp-validation-for="Logradouro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Complemento"></label>
+        <input asp-for="Complemento" class="form-control" />
+        <span asp-validation-for="Complemento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Bairro"></label>
+        <input asp-for="Bairro" class="form-control" />
+        <span asp-validation-for="Bairro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cidade"></label>
+        <input asp-for="Cidade" class="form-control" />
+        <span asp-validation-for="Cidade" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Uf"></label>
+        <input asp-for="Uf" class="form-control" />
+        <span asp-validation-for="Uf" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Numero"></label>
+        <input asp-for="Numero" class="form-control" />
+        <span asp-validation-for="Numero" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Criar</button>
+</form>
+
+<script>
+    // O código é executado após o carregamento completo do documento (DOM)
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Aplica máscara ao campo de CEP conforme o usuário digita
+        document.getElementById('Cep').addEventListener('input', function (e) {
+            // Remove todos os caracteres que não são números (mantém apenas dígitos)
+            let cep = e.target.value.replace(/\D/g, '');
+
+            // Se o CEP tiver mais de 5 dígitos, aplica a máscara "#####-###"
+            if (cep.length > 5) {
+                // Divide o valor em dois grupos, os primeiros 5 dígitos e o restante após um hífen
+                cep = cep.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+
+            // Atualiza o valor do campo com a máscara aplicada
+            e.target.value = cep;
+        });
+
+        // Adiciona um evento de clique ao botão de busca de CEP
+        document.getElementById('buscarCep').addEventListener('click', function () {
+            // Obtém o valor do campo de CEP
+            var cep = document.getElementById('Cep').value;
+
+            // Verifica se o campo de CEP não está vazio
+            if (cep) {
+                // Faz uma requisição à rota do backend para buscar o endereço pelo CEP
+                fetch(`/Endereco/BuscarEnderecoPorCep?cep=${cep}`)
+                    .then(response => {
+                        // Verifica se a resposta foi bem-sucedida
+                        if (!response.ok) {
+                            // Lança um erro se houver um problema com a resposta
+                            throw new Error('Network response was not ok');
+                        }
+                        // Converte a resposta para JSON
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Se os dados forem recebidos com sucesso, atualiza os campos do formulário
+                        if (data) {
+                            // Preenche o campo 'Logradouro' com o valor retornado pela API (corrigido para 'logradouro')
+                            document.getElementById('Logradouro').value = data.logradouro;
+                            // Preenche o campo 'Bairro' (corrigido para 'bairro')
+                            document.getElementById('Bairro').value = data.bairro;
+                            // Preenche o campo 'Cidade' com a localidade retornada (corrigido para 'localidade')
+                            document.getElementById('Cidade').value = data.localidade;
+                            // Preenche o campo 'Uf' com o estado (corrigido para 'uf')
+                            document.getElementById('Uf').value = data.uf;
+                        } else {
+                            // Se nenhum dado for retornado, exibe um alerta ao usuário
+                            alert('Nenhum dado retornado.');
+                        }
+                    })
+                    .catch(error => {
+                        // Captura e exibe erros que ocorreram durante a requisição
+                        console.error('Erro ao buscar o CEP:', error);
+                        alert('Não foi possível buscar o CEP.');
+                    });
+            } else {
+                // Se o campo de CEP estiver vazio, alerta o usuário
+                alert('Por favor, insira um CEP.');
+            }
+        });
+    });
+</script>
+
+
+
+
