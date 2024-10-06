@@ -64,3 +64,26 @@ Exportação de Endereços: Exportação dos dados de endereços para CSV.
 
 Busca de Endereço pelo CEP: Integração com a API ViaCEP para preenchimento automático dos campos do endereço ao buscar por um CEP.
 
+
+### Tela de login
+![login](https://github.com/user-attachments/assets/1618a72c-a0ee-4c1a-9095-4004062ca8b7)
+
+### Tela de cadastro
+![registro](https://github.com/user-attachments/assets/4b66d9b3-f594-42f7-a689-5d5ef3078edc)
+
+### Endereços
+![tela enderecos](https://github.com/user-attachments/assets/95fb054d-5559-4582-a8d4-b35824d66398)
+
+### Adicionar endereço
+![add novo endereco](https://github.com/user-attachments/assets/8c681a78-76f6-4dbe-b3bf-43804c8a0bd1)
+
+### Editar endereço
+![editar endereço](https://github.com/user-attachments/assets/78be8e1f-822c-4757-8167-2e950b6be95e)
+
+### Excluir endereço
+![exclusão endereço](https://github.com/user-attachments/assets/8a57b404-2e7e-4908-99db-09e7c50c7e7f)
+
+### Arquivo CSV
+![csv](https://github.com/user-attachments/assets/a0f17903-d085-4f70-b992-24213592b748)
+
+
