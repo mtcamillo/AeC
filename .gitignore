@@ -1,0 +1,19 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio
+.vscode/
+.vs/
+*.user
+*.suo
+
+# Package directories
+packages/
+node_modules/
+
+# Logs
+*.log
+
+# Config files (se forem específicos de ambiente)
+appsettings.Development.json
