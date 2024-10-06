@@ -1,0 +1,31 @@
+﻿@model AeC.Models.User
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3 class="text-center my-4">Cadastro</h3>
+
+        <form asp-action="Register" method="post">
+            <div class="form-group">
+                <label for="Nome">Nome</label>
+                <input type="text" class="form-control" id="Nome" name="Nome" placeholder="Digite seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" class="form-control" id="username" name="Username" placeholder="Escolha um usuário" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" name="Password" placeholder="Escolha uma senha" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" placeholder="Confirme a senha" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+        </form>
+
+        <p class="text-center mt-3">
+            Já tem uma conta? <a href="@Url.Action("Login", "Account")">Faça login</a>
+        </p>
+    </div>
+</div>
