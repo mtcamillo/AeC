@@ -31,7 +31,7 @@ Substitua SEU_SERVIDOR_SQL pelo nome da sua instância do SQL Server.
 
 ### Aplicar as migrations e criar o banco de dados
    
-O projeto utiliza Entity Framework Core para a gestão de migrations e criação de tabelas no banco de dados. Para aplicar as migrations e criar o banco de dados, siga os seguintes passos:
+O projeto utiliza Entity Framework Core para a gestão de migrations e criação de tabelas no banco de dados, não foi necessário scripts para criação de tabelas. Para aplicar as migrations e criar o banco de dados, siga os seguintes passos:
 
   1. Abra o Terminal ou Console do Gerenciador de Pacotes no Visual Studio.
 
